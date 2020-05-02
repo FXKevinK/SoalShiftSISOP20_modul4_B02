@@ -583,6 +583,13 @@ int main(int argc, char *argv[])
 	return fuse_main(argc, argv, &xmp_oper, NULL);
 }
 ```
+Berikut merupakan implementasi yang diperoleh:
+
+![Screenshot from 2020-05-02 21-16-34](https://user-images.githubusercontent.com/58078219/80866762-b499b780-8cba-11ea-97b6-26289df0efc9.png)
+![Screenshot from 2020-05-02 21-17-21](https://user-images.githubusercontent.com/58078219/80866764-b5cae480-8cba-11ea-929e-82f6c6f19abe.png)
+![Screenshot from 2020-05-02 21-17-42](https://user-images.githubusercontent.com/58078219/80866765-b6637b00-8cba-11ea-9118-1e9af88edb11.png)
+![Screenshot from 2020-05-02 21-19-49](https://user-images.githubusercontent.com/58078219/80866767-b8c5d500-8cba-11ea-9683-c378335af4d3.png)
+![Screenshot from 2020-05-02 21-19-12](https://user-images.githubusercontent.com/58078219/80866766-b794a800-8cba-11ea-86e9-d194b66a4a8e.png)
 
 Kembali ke : [Daftar Isi](#daftar-isi)
 
