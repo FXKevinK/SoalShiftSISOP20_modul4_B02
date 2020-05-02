@@ -551,3 +551,5 @@ int main(int argc, char *argv[])
 Kembali ke : [Daftar Isi](#daftar-isi)
 
 ### Kendala
+1. Pemrosesan letak pemanggilan fungsi enkripsi serta dekripsi file system yang tidak diketahui dalam pengerjaan soal.
+2. Sempat adanya ketidaktahuan dalam penggunaan FUSE pada soal.
