@@ -23,6 +23,42 @@ Kembali ke : [Daftar Isi](#daftar-isi)
 Kembali ke : [Daftar Isi](#daftar-isi)
 
 ## Soal 4
+Berkas nantinya akan terbentuk bernama "fs.log" di direktori *home* pengguna (/home/[user]/fs.log) yang berguna menyimpan daftar perintah system call yang telah dijalankan. Agar nantinya pencatatan lebih rapi dan terstruktur, log akan dibagi menjadi beberapa level yaitu INFO dan WARNING.
+
+* Untuk log level WARNING, merupakan pencatatan log untuk syscall rmdir dan unlink.
+* Sisanya, akan dicatat dengan level INFO.
+
+Format untuk logging yang berisi perintah-perintah yang dilakukan pada file system yaitu:
+
+`[LEVEL]::[yy][mm][dd]-[HH]:[MM]:[SS]::[CMD]::[DESC ...]`
+
+fungsi Generator dibuat untuk menangani setiap pencatatan ke file log pada path `/home/[user]/fs.log`, fungsi Generator memiliki parameter pointer demo ke command INFO dan WARNING yang sedang dijalankan, beserta penggunaan time yang merepesentasikan waktu pada perangkat dan perintah `demo=fopen("/home/fxkevink/Desktop/fs.log", "a");` yakni membuka file fs.log dengan mode "a" yang dapat digunakan untuk create, append dan write:
+
+```c
+void Generator(char *desc, char *path, int check, int check2, char *path2){
+	char result[1024];
+	char flag[10];
+	FILE *demo;
+	if(check==0) {
+		strcpy(flag,"WARNING");
+	}
+	else{
+		strcpy(flag,"INFO");
+	}
+	time_t t = time(NULL);
+	struct tm tm = *localtime(&t);
+	if(check2==0) {
+		snprintf(result,1024,"%s::%02d%02d%02d%02d:%02d:%02d::%s::%s", flag, tm.tm_year%100, tm.tm_mon+1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, desc, path);
+	}
+	else{
+		snprintf(result,1024,"%s::%02d%02d%02d%02d:%02d:%02d::%s::%s::%s", flag, tm.tm_year%100, tm.tm_mon+1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, desc, path, path2);
+	}
+	demo=fopen("/home/fxkevink/Desktop/fs.log", "a");
+	fprintf(demo, "%s\n", result);
+	fclose(demo);
+}
+```
+Source code selengkapnya adalah: 
 
 ```c
 #define FUSE_USE_VERSION 28
